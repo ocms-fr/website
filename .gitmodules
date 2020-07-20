@@ -1,0 +1,3 @@
+[submodule "plugins/rainlab/docs"]
+	path = plugins/rainlab/docs
+	url = https://github.com/rainlab/docs-plugin

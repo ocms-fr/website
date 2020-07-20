@@ -1,0 +1,22 @@
+<div id="non-traduits" class="hidden fixed top-0 bottom-0 left-0 right-0 target:flex justify-center items-center group">
+    <div class="fixed top-0 bottom-0 left-0 right-0 bg-black opacity-0 group-target:opacity-25"></div>
+    <div class="z-10 bg-white max-w-xl shadow-lg prose m-2 md:m-6 p-4">
+        <h4 class="border-gray-300 border-b">Vous accédez à une page non traduite.</h4>
+        <div class="popup-content">
+            <p>Nous sommes désolés, mais cette partie de la documentation n'est pas encore traduite.</p>
+            <p>Les liens vers les parties encore non-traduites sont mentionnés par la mention <sup>[en]</sup> au dessus d'eux.</p>
+
+            <p>Retrouvez la page concernée sur la documentation officielle.</p>
+            <div class="text-right pb-2">
+                <label for="go-to-official-doc-remember">
+                    <input type="checkbox" id="go-to-official-doc-remember">
+                    <i>Ne plus afficher ce message</i>
+                </label>
+            </div>
+            <div class="flex justify-end space-x-3">
+                <a href="#" class="btn wide btn-gray">Fermer</a>
+                <a id="go-to-official-doc" href="javascript:" class="btn btn-blue wide">Voir la page officiel[en]</a>
+            </div>
+        </div>
+    </div>
+</div>

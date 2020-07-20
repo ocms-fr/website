@@ -1,0 +1,9 @@
+import:
+  title: Import subscribers
+  modelClass: SunLab\Newsletter\Models\SubscriberImport
+  list: $/sunlab/newsletter/models/subscriber/columns.yaml
+
+export:
+  title: Export subscribers
+  modelClass: SunLab\Newsletter\Models\SubscriberExport
+  list: $/sunlab/newsletter/models/subscriber/columns.yaml

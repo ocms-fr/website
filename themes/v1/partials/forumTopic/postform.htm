@@ -1,0 +1,30 @@
+<div id="postForm" class="z-10">
+
+    {{ form_open({ request: 'onPost' }) }}
+
+    <input type="hidden" name="topic" value="{{ topic.id }}">
+
+    <div class="post-area relative">
+        <div id="previewArea" class="hidden absolute top-0 bottom-0 left-0 right-0 bg-white border border-gray-200 overflow-y-scroll">
+            <div class="relative">
+                <div id="topicPreview" class="absolute top-0 bottom-0 left-0 right-0 prose max-w-none"></div>
+                <button id="hidePreviewButton" type="button" class="absolute right-0 mr-2 mt-2 rounded-full bg-gray-100 text-gray-500 px-2 pt-1">
+                    Fermer la prévisualisation
+                </button>
+            </div>
+        </div>
+        <textarea id="topicContent" name="content" rows="8" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">{{ form_value('content') }}</textarea>
+        <span class="help-block">Vous pouvez utiliser <a class="underline" href="http://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown</a>.</span>
+    </div>
+
+    <div>
+        <button id="previewButton" class="btn btn-blue wide" type="button">
+            Prévisualiser
+        </button>
+        <button class="btn btn-blue wide" type="submit">
+            Poster
+        </button>
+    </div>
+
+    {{ form_close() }}
+</div>

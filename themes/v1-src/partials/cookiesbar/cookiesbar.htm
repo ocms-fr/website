@@ -1,0 +1,58 @@
+{% set showModal = null %}
+
+<div id="cookies-bar" class="prose border-gray-200 border z-50 max-w-xl bg-white shadow-lg fixed bottom-0 right-0 m-2 md:m-6 lg:m-12 p-6">
+    {% if cookiesSettingsGet('cookies_bar_title', null) %}
+
+    <h3 class="border-gray-200 border-b">{{ cookiesSettingsGet('cookies_bar_title') }}</h3>
+
+    {% endif %}
+
+    {% if cookiesSettingsGet('cookies_bar_content', null) %}
+
+        <div class="content">{{ cookiesSettingsGet('cookies_bar_content')|raw }}</div>
+
+    {% endif %}
+
+    {% if cookiesSettingsGet('cookies_bar_buttons', null)|length %}
+
+        <div class="text-right">
+
+            {% for button in cookiesSettingsGet('cookies_bar_buttons') %}
+
+                {% if button.show_modal %}
+
+                    {% set showModal = button.show_modal %}
+
+                {% endif %}
+
+                {% partial __SELF__ ~ '::cookiesbar-btn-default'  button = button %}
+
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% if showModal %}
+
+    {% partial __SELF__ ~ '::cookiesbar-modal-default' %}
+
+{% endif %}
+
+{% put scripts %}
+
+    <script>
+
+        $('#cookies-bar .btn-accept-all').click(function(e) {
+            e.preventDefault();
+
+            {% partial '@set-cookies' %}
+
+            $('#cookies-bar').hide();
+        });
+
+    </script>
+
+{% endput %}

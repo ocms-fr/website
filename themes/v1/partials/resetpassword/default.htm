@@ -1,0 +1,9 @@
+<div class="flex flex-col md:flex-row justify-around">
+    <div class="w-full max-w-sm mb-4 md:mb-0 mx-auto md:mx-4 p-5 bg-white shadow-lg rounded border-gray-200 border-2">
+        {% if __SELF__.code == null %}
+            {% partial __SELF__ ~ '::restore' %}
+        {% else %}
+            {% partial __SELF__ ~ '::reset' %}
+        {% endif %}
+    </div>
+</div>

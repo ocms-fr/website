@@ -1,0 +1,19 @@
+{{ form_ajax(__SELF__~'::onNewsletterSubscribe') }}
+<span class="text-xl font-semibold text-blue-100">Newsletter</span>
+{% if __SELF__.frequencies|length > 1 %}
+<label class="flex content-center items-center" for="frequency">
+    Recevoir un mail tous les
+    <select id="frequency" name="frequency" class="bg-royalblue hover:cursor-pointer">
+        {% for frequency in __SELF__.frequencies %}
+        <option value="{{ frequency }}">{{ frequency > 1 ? frequency~' jours' : 'jours' }}</option>
+        {% endfor %}
+    </select>
+</label>
+{% endif %}
+<div class="newsletter-subscription flex mt-2 pl-2">
+    <input class="flex-1 shadow appearance-none border rounded w-full py-2 px-3 mr-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" name="email" required>
+    <button class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        S'inscrire
+    </button>
+</div>
+{{ form_close() }}

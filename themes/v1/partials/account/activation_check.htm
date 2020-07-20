@@ -1,0 +1,11 @@
+{% if not user.is_activated %}
+
+    <h3>Votre email n'as pas encore été validé.</h3>
+    <p>
+        Vous devez valider votre email sans quoi votre compte sera supprimé. Consultez vos emails
+        <a href="javascript:;" data-request="onSendActivationEmail" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            Renvoyer l'email de validation
+        </a>
+    </p>
+
+{% endif %}

@@ -1,0 +1,22 @@
+{% set paginationEnabled =
+	posts.currentPage > 1 or
+	posts.lastPage > 1 or
+	posts.lastPage > posts.currentPage
+%}
+
+<div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+    <div>
+        <p class="text-sm leading-5 text-gray-700">
+            Affichage de
+            <span class="font-medium">{{ posts.firstItem }}</span>
+            à
+            <span class="font-medium">{{ posts.lastItem }}</span>
+            sur
+            <span class="font-medium">{{ posts.total }}</span>
+            .
+        </p>
+    </div>
+
+    <!-- Computer Navigation -->
+    {% partial __SELF__ ~ "::pagination-list" records=posts %}
+</div>

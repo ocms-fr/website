@@ -1,0 +1,36 @@
+<div class="py-4">
+    {{ form_open({ request: 'onCreate' }) }}
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="topicSubject">Sujet</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                   id="topicSubject"
+                   name="subject"
+                   type="text"
+                   value="{{ post('subject') }}" />
+        </div>
+
+        <div class="mb-4">
+            <label for="topicContent" class="block text-gray-700 text-sm font-bold mb-2">Contenu</label>
+            <textarea
+                id="topicContent"
+                name="content"
+                rows="12"
+                type="text"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            >{{ post('content') }}</textarea>
+            <span class="help-block">Vous pouvez utiliser la syntaxe <a class="underline" href="http://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown</a>.</span>
+        </div>
+
+        <div class="form-group post-buttons">
+            <button class="btn btn-blue wide" type="submit">
+                Poster
+            </button>
+            {% if returnUrl %}
+                <a class="btn btn-white" href="{{ returnUrl }}">Annuler</a>
+            {% endif %}
+        </div>
+
+        <input type="hidden" name="channel" value="{{ channel.id }}" />
+
+    {{ form_close() }}
+</div>

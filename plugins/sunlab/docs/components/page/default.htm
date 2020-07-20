@@ -1,0 +1,12 @@
+<div id="docs-content">
+    <h1>{{ __SELF__.title }}</h1>
+    {% if __SELF__.chapters %}
+    <ul>
+        {% for chapter in __SELF__.chapters %}
+        <li><a href="{{ chapter.url }}">{{ chapter.title }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {{ __SELF__.content|raw }}
+</div>

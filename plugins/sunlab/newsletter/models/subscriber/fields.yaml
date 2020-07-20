@@ -1,0 +1,19 @@
+fields:
+    email:
+        label: 'sunlab.newsletter::lang.subscriber.email'
+        type: email
+        span: auto
+    frequency:
+        label: 'sunlab.newsletter::lang.subscriber.frequency'
+        type: number
+        span: auto
+    last_sended_at:
+        label: 'sunlab.newsletter::lang.subscriber.last_sended_at'
+        type: datepicker
+        span: auto
+    categories:
+        label: 'sunlab.newsletter::lang.subscriber.categories'
+        nameFrom: name
+        descriptionFrom: id
+        type: relation
+        span: auto

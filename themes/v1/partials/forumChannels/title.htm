@@ -1,0 +1,17 @@
+{% set isGuest = user is same as(null) %}
+
+<div class="flex flex-col md:flex-row items-center justify-between p-4 space-y-4 md:space-y-0">
+    {{ form_open({ method: 'get' })}}
+    <div>
+        <div class="inline-flex shadow rounded-lg">
+            <input class="rounded-l-lg appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-inner" name="search" type="text" id="search">
+            <button type="submit" class="rounded-r-lg bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 focus:outline-none focus:shadow-outline">Rechercher</button>
+        </div>
+    </div>
+    {{ form_close() }}
+    {% if isGuest %}
+    <div>
+        Vous devez <a href="{{ 'user/account'|page }}">être connecté</a> pour participer.
+    </div>
+    {% endif %}
+</div>

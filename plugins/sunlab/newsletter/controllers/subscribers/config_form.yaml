@@ -1,0 +1,10 @@
+name: Subscribers
+form: $/sunlab/newsletter/models/subscriber/fields.yaml
+modelClass: SunLab\Newsletter\Models\Subscriber
+defaultRedirect: sunlab/newsletter/subscribers
+create:
+    redirect: 'sunlab/newsletter/subscribers/update/:id'
+    redirectClose: sunlab/newsletter/subscribers
+update:
+    redirect: sunlab/newsletter/subscribers
+    redirectClose: sunlab/newsletter/subscribers

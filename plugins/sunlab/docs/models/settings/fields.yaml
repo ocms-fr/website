@@ -1,0 +1,17 @@
+fields:
+    hashKey:
+        label: Webhook
+        span: left
+
+    branch:
+        label: Branch
+        span: right
+        default: master
+
+    repositoryAuthor:
+        label: Repository Owner
+        span: left
+
+    repositoryName:
+        label: Repository Name
+        span: right

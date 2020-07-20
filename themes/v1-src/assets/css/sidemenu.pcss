@@ -1,0 +1,30 @@
+#sidemenu-btn:not(:checked) ~ #sidemenu
+    @apply shadow-none
+    transform: translate(100%)
+
+#sidemenu
+    @apply fixed right-0 top-0 h-full pt-16 shadow-xl
+    transition: all .5s ease-in-out
+
+    ul li
+        padding-left: 1rem
+        top: -5px
+
+.sidemenu-navicon
+    @apply fixed right-0 bottom-0
+    writing-mode: vertical-rl
+    text-orientation: upright
+
+    label
+        @apply block cursor-pointer select-none px-2 py-4 bg-gray-100 border border-t-0 border-gray-300 rounded-l-lg my-auto
+
+@screen lg
+    .sidemenu-navicon
+        @apply hidden
+
+    #sidemenu-btn:not(:checked) ~ #sidemenu
+        transform: none
+
+    #sidemenu
+        @apply ml-0 mt-0 relative
+        transition: none

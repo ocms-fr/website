@@ -1,0 +1,104 @@
+==
+    function onStart() {
+        $this->addJs([
+            '~/plugins/rainlab/docs/assets/vendor/highlight/highlight.pack.js',
+            '~/plugins/sunlab/docs/assets/js/highlight-config.js'
+        ]);
+        $this->addCss('/plugins/sunlab/docs/assets/vendor/highlight/styles/foundation.css');
+    }
+==
+<div class="flex flex-col md:flex-row divide-x-2 divide-gray-200">
+    <div class="min-w-32 py-4 flex flex-col items-center">
+        <a href="{{ post.member.url }}" class="avatar hidden md:inline">
+            <img src="{{ post.member.user.avatarThumb(50) }}" alt="{{ post.member.username }}" class="rounded-full">
+        </a>
+        <a href="{{ post.member.url }}" class="author p-2 text-lg">{{ post.member.username }}</a>
+    </div>
+    <div class="p-4 flex-grow">
+        <div class="justify-end flex space-x-8 my-2">
+            <div class="italic">
+                <a href="#post-{{ post.id }}">
+                    {% partial __SELF__ ~ "::timestamp" date=post.created_at %}
+                </a>
+            </div>
+            {% if post.member.is_banned %}
+            <div class="status text-danger">
+                <i class="icon-exclamation"></i> Banned
+            </div>
+            {% elseif topic.channel.is_guarded and not post.member.is_approved %}
+            <div class="status text-warning">
+                <i class="icon-lock"></i> Non-approuvé
+            </div>
+            {% elseif post.member.is_moderator %}
+            <div class="status">
+                <i class="icon-star"></i> Modérateur
+            </div>
+            {% endif %}
+        </div>
+
+        {% if mode == 'edit' %}
+
+        {{ form_open() }}
+        <!-- Passable fields -->
+        <input type="hidden" name="mode" value="save">
+        <input type="hidden" name="post" value="{{ post.id }}">
+
+        {% if topic.first_post.id == post.id %}
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="topicSubject">Sujet</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="topicSubject" name="subject" type="text" value="{{ topic.subject }}">
+        </div>
+        {% endif %}
+
+        <div class="mb-4 w-full">
+            <textarea rows="12" name="content" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">{{ post.content }}</textarea>
+        </div>
+        <div class="mt-4 font-bold flex divide-x-8 divide-transparent">
+            <button type="button" data-request="{{ __SELF__ }}::onUpdate" data-request-data="post: {{ post.id }}" data-request-update="'{{ __SELF__ }}::post': '#post-{{ post.id }}'" class="save">
+                Sauvegarder
+            </button>
+
+            <button type="button" data-request="{{ __SELF__ }}::onUpdate" data-request-data="post: {{ post.id }}, mode: 'delete'" data-request-update="'{{ __SELF__ }}::post': '#post-{{ post.id }}'" data-request-confirm="Are you sure?" class="delete">
+                Supprimer
+            </button>
+
+            <button type="button" data-request="{{ __SELF__ }}::onUpdate" data-request-data="post: {{ post.id }}, mode: 'view'" data-request-update="'{{ __SELF__ }}::post': '#post-{{ post.id }}'" class="cancel">
+                Annuler
+            </button>
+        </div>
+        {{ form_close() }}
+
+        {% elseif mode == 'delete' %}
+        <div class="text">
+            <p><em>Post has been deleted</em></p>
+        </div>
+        {% else %}
+        <div class="text prose max-w-none contains-code">
+            {{ post.content_html|raw }}
+
+            {% if post.created_at != post.updated_at %}
+            <p class="text-xs">
+                Dernière édition le {% partial __SELF__ ~ "::timestamp" date=post.updated_at %}
+            </p>
+            {% endif %}
+
+        </div>
+        <div class="mt-4 font-bold flex divide-x-8 divide-transparent">
+
+            {% if topic.canPost %}
+            <a href="#postForm" class="quote" data-request-data="post: {{ post.id }}" data-quote-button>
+                Citer
+            </a>
+            {% endif %}
+
+            {% if topic.canPost and post.canEdit and mode != 'edit' and mode != 'delete' %}
+            <button type="button" class="edit" data-request="onUpdate" data-request-data="post: {{ post.id }}" data-request-update="'{{ __SELF__ ~ '::post' }}': '#post-{{ post.id }}'">
+                Modifier
+            </button>
+            {% endif %}
+
+        </div>
+        {% endif %}
+
+    </div>
+</div>

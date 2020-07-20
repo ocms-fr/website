@@ -1,0 +1,22 @@
+{% set links = {
+    'Actualités' : url(''),
+    'Documentation' : 'documentation'|page({path: 'setup/installation'}),
+    'Forum' : 'forum/home'|page
+} %}
+
+{% if user is null and mobile %}
+    {% set links = links|merge({'Espace membre' : 'user/account'|page}) %}
+{% endif %}
+
+{% set activeLinkClass = 'px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out' %}
+{% set linkClass = 'ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out' %}
+{% set mobileActiveLinkClass = 'block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out' %}
+{% set mobileLinkClass = 'mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out' %}
+
+{% for text, url in links %}
+    {% if url is same as (''|page) %}
+    <a href="{{ url }}" class="{{ mobile ? mobileActiveLinkClass : activeLinkClass }}">{{ text }}</a>
+    {% else %}
+    <a href="{{ url }}" class="{{ mobile ? mobileLinkClass : linkClass }}">{{ text }}</a>
+    {% endif %}
+{% endfor %}

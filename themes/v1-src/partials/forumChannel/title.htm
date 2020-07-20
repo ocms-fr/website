@@ -1,0 +1,29 @@
+<div class="flex flex-col md:flex-row items-center justify-between p-4 space-y-4 md:space-y-0">
+    {{ form_open({ method: 'get' })}}
+    <div>
+        <div class="inline-flex shadow rounded-lg">
+            <input class="rounded-l-lg appearance-none border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-inner"
+                   name="search"
+                   type="text"
+                   id="search">
+            <button type="submit" class="rounded-r-lg bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 focus:outline-none focus:shadow-outline">Rechercher</button>
+        </div>
+    </div>
+    {{ form_close() }}
+    <div class="flex flex-col sm:flex-row sm:flex-wrap">
+        {% if isGuest %}
+        <div class="inline-flex items-center justify-center space-x-2">
+            <div>Vous devez être connecté pour</div>
+            <span class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center cursor-not-allowed">
+                <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+                <span>Créer un sujet</span>
+            </span>
+        </div>
+        {% else %}
+        <a href="{{ topicPage|page }}?channel={{ channel.id }}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+            <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+            <span>Créer un sujet</span>
+        </a>
+        {% endif %}
+    </div>
+</div>

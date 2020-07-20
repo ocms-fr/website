@@ -1,0 +1,80 @@
+<table class="bg-gray-200 min-w-full">
+    <thead
+        class="py-3 border-b border-t border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+    <tr>
+        <th class="hidden md:table-cell "></th>
+        <th class="hidden md:table-cell px-6 py-3">
+            Sujet
+        </th>
+        <th class="hidden md:table-cell px-6 py-3 text-center">
+            Réponses
+        </th>
+        <th class="hidden md:table-cell px-6 py-3 text-center">
+            Vues
+        </th>
+        <th class="px-6 py-3 max-w-xs">
+            Dernier message
+        </th>
+    </tr>
+    </thead>
+    <tbody class="bg-white">
+    {% for topic in topics %}
+    <tr class="hover:bg-gray-100">
+
+        <td class="hidden md:table-cell px-6 py-4 text-center">
+            <a href="{{ topic.url }}" class="block w-full h-full">
+                <span class="topic-indicator {{ topic.hasNew ? 'has-new' }}"></span>
+            </a>
+        </td>
+
+        <td class="px-6 py-4 w-full">
+            <div class="text-sm leading-5 text-gray-900">
+                {% if topic.is_sticky %}<strong>Épinglé</strong>{% endif %}
+                {% if topic.is_locked %}<i class="icon icon-lock"></i> <strong>Fermé</strong>{% endif %}
+            </div>
+            <div class="text-sm leading-5 text-gray-500">
+                <a href="{{ topic.url }}" class="block text-sm leading-5 font-medium text-gray-900">
+                    {{ topic.subject }}
+                </a>
+                <div class="text-xs leading-5 text-gray-500">
+                    par <a href="{{ topic.start_member.url }}" class="text-gray-500">{{ topic.start_member.username
+                    }}</a>
+                </div>
+            </div>
+        </td>
+
+        <td class="hidden md:table-cell px-6 py-4 text-center">
+            <p>{{ (topic.count_posts-1) }}</p>
+        </td>
+
+        <td class="hidden md:table-cell px-6 py-4 text-center">
+            <p>{{ topic.count_views }}</p>
+        </td>
+
+        <td class="px-6 py-4">
+            <div class="flex flex-col items-center">
+                <div class="hidden md:block flex-shrink-0 h-10 w-10">
+                    <img class="h-10 w-10 rounded-full" src="{{ topic.last_post_member.user.avatarThumb(24) }}" alt=""/>
+                </div>
+                <div class="ml-4">
+                    <a href="{{ topic.last_post_member.url }}"
+                       class="block text-sm leading-5 font-medium text-gray-900">{{ topic.last_post_member.username
+                        }}</a>
+                    <a href="{{ topic.url }}?page=last#post-{{ topic.last_post_id }}"
+                       class="block text-sm leading-5 text-gray-500 md:whitespace-no-wrap">
+                        {% partial __SELF__ ~ "::timestamp" date=topic.last_post_at %}
+                    </a>
+                </div>
+            </div>
+        </td>
+
+    </tr>
+    {% endfor %}
+
+    {% if not topics|length %}
+    <tr>
+        <td colspan="100">There are no topics in this channel.</td>
+    </tr>
+    {% endif %}
+    </tbody>
+</table>

@@ -1,0 +1,6 @@
+plugin:
+    name: 'TailwindCSS Boilerplate Plugin'
+    description: 'Only for use with the TailwindCSS Boilerplate theme: '
+    author: RomainMazB
+    homepage: 'https://www.maz.digital'
+

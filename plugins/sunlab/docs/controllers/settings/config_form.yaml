@@ -1,0 +1,4 @@
+name: Settings
+form: $/sunlab/docs/models/settings/fields.yaml
+modelClass: SunLab\Docs\Models\Settings
+defaultRedirect: sunlab/docs/settings/update

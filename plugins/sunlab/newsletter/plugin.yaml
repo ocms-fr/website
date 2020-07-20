@@ -1,0 +1,36 @@
+plugin:
+    name: 'sunlab.newsletter::lang.plugin.name'
+    description: 'sunlab.newsletter::lang.plugin.description'
+    author: SunLab
+    icon: icon-paper-plane-o
+    homepage: 'https://www.octobercms.fr'
+permissions:
+    manage_newsletter:
+        tab: 'sunlab.newsletter::lang.plugin.name'
+        label: 'sunlab.newsletter::lang.permission.subscriber'
+navigation:
+    main-menu-subscriber:
+        label: 'sunlab.newsletter::lang.menu.subscriber'
+        url: sunlab/newsletter/subscribers
+        icon: icon-envelope-square
+        permissions:
+            - manage_newsletter
+        sideMenu:
+            main-menu-subscriber:
+                label: 'sunlab.newsletter::lang.menu.subscriber'
+                url: sunlab/newsletter/subscribers
+                icon: icon-envelope-square
+                permissions:
+                    - manage_newsletter
+            side-menu-import:
+                label: 'sunlab.newsletter::lang.menu.import'
+                url: sunlab/newsletter/subscribers/import
+                icon: icon-upload
+                permissions:
+                    - manage_newsletter
+            side-menu-export:
+                label: 'sunlab.newsletter::lang.menu.export'
+                url: sunlab/newsletter/subscribers/export
+                icon: icon-download
+                permissions:
+                    - manage_newsletter

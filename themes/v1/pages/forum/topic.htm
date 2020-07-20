@@ -1,0 +1,32 @@
+title = "Forum Topic"
+url = "/forum/topic/:slug"
+layout = "default"
+description = "Viewing a single forum discussion topic."
+hidden = "0"
+
+[forumTopic]
+slug = "{{ :slug }}"
+postsPerPage = "20"
+memberPage = "404"
+channelPage = "forum/channel"
+==
+    use October\Rain\Parse\Markdown;
+
+    function onPreviewMarkdown()
+    {
+        $content = str_replace('    ', "\t", input('content'));
+        return [
+            '#topicPreview' => (new Markdown)->parse($content)
+        ];
+    }
+
+    function onEnd()
+    {
+        $this->page->title = $this->topic->subject ?? null;
+    }
+==
+<div class="white-container content-block">
+    <div class="-mx-10 -my-6 rounded-lg">
+        {% component 'forumTopic' %}
+    </div>
+</div>

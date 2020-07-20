@@ -1,0 +1,62 @@
+description = "Default layout"
+
+[SubscribeForm]
+
+[session]
+security = "all"
+
+[cookiesBar]
+==
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>October CMS - {{ this.page.title }}</title>
+    <meta name="description" content="{{ this.page.meta_description }}">
+    <meta name="title" content="{{ this.page.meta_title }}">
+    <meta name="author" content="OctoberCMS">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="OctoberCMS">
+    <link rel="icon" type="image/png" href="{{ 'assets/images/october.png'|theme }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap">
+    <style>
+        .preload * {
+            transition: none;
+        }
+    </style>
+    <link rel="stylesheet" property="stylesheet" href="{{ 'assets/css/theme.css'|theme }}">
+    {% styles %}
+</head>
+
+<body class="preload bg-gray-200 font-sans leading-normal tracking-normal flex flex-col min-h-screen overflow-x-hidden">
+
+{% component 'session' %}
+
+{% partial 'site/header' %}
+
+{% partial 'site/content-container' %}
+
+<!-- Footer contains the SubscribeForm component -->
+{% partial 'site/footer' %}
+
+<!-- Message flash -->
+{% flash %}
+<p
+    data-control="flash-message"
+    class="flash-message fade {{ type }}"
+    data-interval="5">
+    {{ message }}
+</p>
+{% endflash %}
+
+{% component 'cookiesBar' %}
+
+<!-- Scripts & Styles-->
+<script src="{{ 'assets/javascript/theme.js'|theme }}"></script>
+{% framework extras %}
+{% scripts %}
+
+</body>
+
+</html>

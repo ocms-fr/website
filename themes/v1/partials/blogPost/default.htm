@@ -1,0 +1,15 @@
+{% set post = __SELF__.post %}
+<div class="white-container content-block">
+    <a class="text-2xl text-gray-700 font-bold hover:text-gray-600" href="{{ ''|page }}">{{ post.title }}</a>
+    <div class="prose max-w-none">{{ post.content|md }}</div>
+    <div class="flex justify-between items-center mt-8">
+        <span class="font-light text-gray-600">{{ post.published_at|localizeddate('none', 'none', 'fr-FR', "Europe/Paris", "d MMMM Y") }}</span>
+        {% if post.categories.count %}
+        <div class="flex justify-end">
+            {% for category in post.categories %}
+            <a class="btn btn-gray font-bold" href="{{ category.url }}">{{ category.name }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,23 @@
+@import 'header.pcss'
+@import 'sidemenu.pcss'
+@import 'footer.pcss'
+
+body
+    font-family: Roboto
+
+a
+    @apply text-blue-600
+
+    &:hover
+        @apply underline
+
+.content-block
+    @apply -mx-5 px-10 my-4 py-6
+
+    .with-submenu
+        @screen lg
+            &>.white-container.content
+                @apply -ml-5 mr-5
+
+.white-container
+    @apply rounded-lg shadow-md text-gray-600 bg-white

@@ -1,0 +1,8 @@
+columns:
+    id:
+        label: id
+        type: number
+    subtype_id:
+        label: 'sunlab.newsletter::lang.subscriber.categories'
+        type: number
+        relation: categories

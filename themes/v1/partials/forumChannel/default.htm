@@ -1,0 +1,21 @@
+<div class="white-container content-block">
+    <div class="-mx-10 -my-6 px-4">
+        {% partial __SELF__ ~ "::title" %}
+    </div>
+</div>
+
+<div class="white-container content-block">
+    <div class="-mx-10 -my-6">
+    {% partial __SELF__ ~ "::topics" %}
+
+    {% if topics %}
+        {% partial __SELF__ ~ "::pagination" %}
+    {% endif %}
+    </div>
+</div>
+
+<div class="white-container content-block">
+    <div class="-mx-10 -my-6">
+        {% partial __SELF__ ~ "::title" %}
+    </div>
+</div>

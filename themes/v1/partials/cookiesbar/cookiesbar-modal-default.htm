@@ -1,0 +1,41 @@
+<div id="sg-settings-modal-{{ __SELF__ }}" class="hidden target:flex fixed z-50 top-0 bottom-0 left-0 right-0 justify-center items-center group">
+    <div class="absolute top-0 bottom-0 left-0 right-0 bg-black opacity-0 group-target:opacity-25 transition-opacity ease-in duration-500"></div>
+    <div class="relative border-gray-200 border z-50 max-w-2xl bg-white shadow-lg m-2 md:m-6 lg:m-12 opacity-0 group-target:opacity-100 transition-opacity ease-in duration-200" tabindex="-1" role="dialog" aria-labelledby="sg-settings-modal-{{ __SELF__ }}">
+        <a href="#" class="absolute top-0 right-0 mr-2 no-underline hover:no-underline text-3xl hover:text-gray-800" aria-hidden="true">&times;</a>
+
+        <div class="modal-dialog modal-lg prose px-6 pb-6" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h3 class="border-gray-200 border-b">{{cookiesSettingsGet('cookies_manage_title')}}</h3>
+
+                </div>
+
+                <div class="modal-body">
+
+                    {% if cookiesSettingsGet('cookies_manage_content', null) %}
+
+                    <div class="content">{{ cookiesSettingsGet('cookies_manage_content')|raw }}</div>
+
+                    {% endif %}
+
+                    {% partial '@list-cookies-' ~ cookiesSettingsGet('ui_style', 'default') disableSaveButton = true customId = '-modal' %}
+
+                </div>
+
+                <div class="flex justify-end">
+
+                    <a href="#" data-dismiss="modal" class="btn btn-gray">{{ 'janvince.smallgdpr::lang.settings.form_fields.cancel'|trans }}</a>
+
+                    <button type="button" id="cookies-manage-save-modal" class="btn btn-blue">{{ 'janvince.smallgdpr::lang.settings.form_fields.save_settings'|trans }}</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

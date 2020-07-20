@@ -1,0 +1,29 @@
+{% set sidemenuPresence = placeholder('sidemenu') is not empty %}
+{% set display_mainContent_bg = display_mainContent_bg is not defined or display_mainContent_bg is same as (true) %}
+<div id="page-content" class="container mx-auto text-gray-800 flex-grow flex h-full shadow-lg">
+    <div class="w-full {{ sidemenuPresence ? 'lg:w-3/4 with-sidemenu' }}">
+        <h1 class="text-3xl my-2 text-center">{{ this.page.title }}</h1>
+        {% page %}
+    </div>
+    {% if sidemenuPresence %}
+    <div class="w-full lg:w-1/4 overflow-x-hidden min-h-screen flex-grow px-5">
+        <div class="sidemenu-navicon fixed right-0 bottom-0">
+            <label for="sidemenu-btn">
+                {% placeholder sidemenuname default %}
+                MENU
+                {% endplaceholder %}
+            </label>
+        </div>
+
+        <input class="sidemenu-btn hidden" type="checkbox" id="sidemenu-btn">
+        <nav id="sidemenu" class="bg-white lg:bg-transparent block z-10 lg:z-auto absolute lg:sticky lg:top-0 p-5">
+            <div class="sidemenu-navicon">
+                <label for="sidemenu-btn">
+                    FERMER
+                </label>
+            </div>
+            {% placeholder sidemenu %}
+        </nav>
+    </div>
+    {% endif %}
+</div>

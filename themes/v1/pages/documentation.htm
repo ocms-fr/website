@@ -1,0 +1,25 @@
+title = "Documentation"
+url = "/docs/:path?*"
+layout = "default"
+is_hidden = 0
+
+[docsPage]
+package_name = "romainmazb/oc-docs-fr"
+path = "path"
+
+[docsNavigation]
+package_name = "romainmazb/oc-docs-fr"
+path = "config/toc-docs"
+==
+<div id="documentation-content" class="prose max-w-none white-container content-block">
+    {% component 'docsPage' %}
+</div>
+{% put sidemenu %}
+    <div id="doc-nav">
+        {% component 'docsNavigation' %}
+    </div>
+{% endput %}
+
+{% put sidemenuname %}
+    DOCUMENTATION
+{% endput %}

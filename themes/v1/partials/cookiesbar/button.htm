@@ -1,0 +1,3 @@
+<a class="btn wide {{ button.accept_all_cookies_btn ? 'btn-accept-all' }} {{ button.css_class }}" {{ button.attributes|raw }} {% if button.show_modal %} {% set showmodal="button.show_modal" %} data-toggle="modal" data-target="#sg-settings-modal-{{ __SELF__ }}" href="#sg-settings-modal-{{ __SELF__ }}" {% else %} href="{{ button.url_external ? button.url_external : button.url|app }}" {% endif %}>
+    {{ button.title }}
+</a>

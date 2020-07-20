@@ -1,0 +1,21 @@
+title = "S'inscrire à la première communauté francophone dédié à OctoberCMS"
+url = "/sinscrire-la-premiere-communaute-francophone-dedie-octobercms"
+layout = "default"
+is_hidden = 0
+
+[account]
+paramCode = "code"
+forceSecure = 0
+requirePassword = 0
+==
+    function onInit() {
+        $this['display_mainContent_bg'] = false;
+    }
+
+    function onStart() {
+        $this->page->title = $this->controller->vars['user']
+            ? 'Connecté en tant que ' . $this->controller->vars['user']->name
+            : "Se connecter / S'inscrire";
+    }
+==
+{% component 'account' %}

@@ -1,0 +1,70 @@
+fields:
+    subscription_section:
+        label: sunlab.newsletter::lang.settings.subscription_section
+        type: section
+    subscription_from:
+        label: sunlab.newsletter::lang.settings.subscription_from
+        type: email
+        span: auto
+    subscription_replyTo:
+        label: sunlab.newsletter::lang.settings.subscription_replyTo
+        type: email
+        span: auto
+#    subscription_needConfirmation:
+#        label: sunlab.newsletter::lang.settings.subscription_needConfirmation
+#        type: switch
+#        span: auto
+#        default: false
+
+    unsubscription_section:
+        label: sunlab.newsletter::lang.settings.subscription_section
+        type: section
+    unsubscription_from:
+        label: sunlab.newsletter::lang.settings.unsubscription_from
+        type: email
+        span: auto
+    unsubscription_replyTo:
+        label: sunlab.newsletter::lang.settings.unsubscription_replyTo
+        type: email
+        span: auto
+#    unsubscription_needConfirmation:
+#        label: sunlab.newsletter::lang.settings.unsubscription_needConfirmation
+#        type: switch
+#        span: auto
+#        default: false
+
+    newsletter_section:
+        label: sunlab.newsletter::lang.settings.subscription_section
+        type: section
+    newsletter_from:
+        label: sunlab.newsletter::lang.settings.newsletter_from
+        type: email
+        span: auto
+    newsletter_replyTo:
+        label: sunlab.newsletter::lang.settings.newsletter_replyTo
+        type: email
+        span: auto
+
+    logs_section:
+        label: sunlab.newsletter::lang.settings.logs_section
+        type: section
+    frequencies:
+        label: sunlab.newsletter::lang.settings.newsletter_frequencies
+        comment: sunlab.newsletter::lang.settings.newsletter_frequencies_comment
+        default: 1, 3, 7, 15
+        required: true
+        span: auto
+    logs_to:
+        label: sunlab.newsletter::lang.settings.logs_to
+        type: email
+        span: auto
+    news_plugin:
+        label: sunlab.newsletter::lang.settings.news_plugin
+        type: dropdown
+        span: auto
+    logs_activated:
+        label: sunlab.newsletter::lang.settings.logs_activated
+        comment: sunlab.newsletter::lang.settings.logs_storage_path
+        type: switch
+        span: auto
+        default: false

@@ -1,0 +1,81 @@
+.md-content
+    // Headings
+    h2, h3, h4, h5, h6
+        @apply pl-10 font-bold mt-6 mb-2 -mx-5
+
+        // Display anchor links on headings hover
+        a:empty
+            @apply border-0 font-thin text-blue-700
+            &:hover
+                @apply text-blue-900
+
+    h2
+        @apply text-2xl border-t
+    h3
+        @apply text-xl border-t
+    h4
+        @apply text-lg
+
+    // Paragraphs
+    p
+        @apply text-justify py-2
+
+    // Inline code
+    :not(pre) > code
+        @apply bg-gray-200 px-1 text-gray-900
+
+    // Table customization
+    table
+        @apply table-auto my-2 -mx-5
+
+        th, td
+            @apply px-4 py-2
+
+        th, td
+            @apply border-b
+        &:nth-of-type(1)
+            @apply border-r
+
+        td
+            @apply text-justify
+
+        td:nth-of-type(1)
+            @screen md
+                @apply whitespace-no-wrap
+
+        :not(thead)>tr:nth-of-type(even)
+            @apply bg-gray-100
+
+        :not(thead)>tr:hover
+            @apply text-black bg-teal-100
+    // Inline code
+    :not(pre) > code
+        @apply bg-white
+
+    // Link customization
+    a
+        @apply border-b border-gray-400 relative mr-1
+            &:hover
+        @apply border-gray-800 text-black
+
+        &:not(:empty)::after
+            content: '+'
+            @apply text-blue-700 absolute top-0 right-0 -mr-2 -mt-3 font-bold
+
+    blockquote
+        background: #f9f9f9
+        border-left: 10px solid #ccc
+        margin: 1.5em 10px
+        padding: 0.5em 10px
+        quotes: "\201C""\201D""\2018""\2019"
+
+    blockquote:before
+        color: #ccc
+        content: open-quote
+        font-size: 4em
+        line-height: 0.1em
+        margin-right: 0.25em
+        vertical-align: -0.4em
+
+    blockquote p
+        display: inline

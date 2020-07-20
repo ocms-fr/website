@@ -1,0 +1,68 @@
+<div class="flex flex-col py-4 space-y-4 px-8">
+
+    {% flash %}
+    <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    </div>
+    {% endflash %}
+
+    {% if returnUrl %}
+    <div>
+        <a href="{{ returnUrl }}" class="-ml-px relative inline-flex items-center px-2 py-2 rounded-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-600 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-600 transition ease-in-out duration-150">
+            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            Retour vers {{ channel.title }}
+        </a>
+    </div>
+    {% endif %}
+
+    {% if topic %}
+
+    <div class="flex flex-col md:flex-row-reverse">
+        <div class="w-full md:w-1/5 relative">
+
+            <div id="topicControlPanel">
+                {% partial "@controlpanel" %}
+            </div>
+
+        </div>
+        <div class="w-full">
+            {% partial "@posts" %}
+        </div>
+    </div>
+    <div>
+        {% partial "@pagination" %}
+    </div>
+
+    {% elseif channel %}
+
+    <h4 class="text-xl">Créer un nouveau sujet</h4>
+    {% partial "@createform" %}
+
+    {% else %}
+
+    <p>Sujet non trouvé</p>
+
+    {% endif %}
+</div>
+
+<div id="postForm" class="-bottom-full target:bottom-0 fixed left-0 right-0 transition-all ease-in duration-300 z-10">
+    <div class="relative container mx-auto">
+        <a href="#" class="absolute right-0 -mx-3 mt-2 rounded-full bg-gray-200 text-gray-500 px-2 pt-1">X</a>
+        <div class="rounded-t-lg bg-white shadow-lg border-gray-300 border-t mx-auto -mx-5 px-8 py-4">
+            <h4 class="text-lg font-bold pl-4">Répondre à ce sujet</h4>
+            {% if not topic.canPost %}
+            <p>
+                Vous ne pouvez pas modifier ces messages ou répondre:
+                {% if not member %}Vous devez être connecté.{% endif %}
+                {% if member.is_banned %}Votre compte as été banni.{% endif %}
+                {% if topic.is_locked %}Ce sujet est fermé.{% endif %}
+            </p>
+            {% else %}
+            {% partial "@postform" %}
+            {% endif %}
+        </div>
+    </div>
+</div>

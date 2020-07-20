@@ -1,0 +1,13 @@
+.dead-link {
+    position: relative;
+    margin-right: .8rem;
+}
+
+.dead-link:after {
+    content: '[en]';
+    position: absolute;
+    right: 0;
+    top: -1em;
+    right: -1em;
+    font-size: .8rem;
+}

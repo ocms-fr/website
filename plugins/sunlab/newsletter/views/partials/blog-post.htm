@@ -1,0 +1,20 @@
+subject = "Newsletter from OctoberCMS.fr"
+==
+
+Hi {{ email }},
+
+Here is the news!
+
+{% for news in newsList %}
+{{ news.title }}
+
+{% endfor %}
+==
+
+<p>Hi {{ email }},</p>
+
+<ul>
+    {% for news in newsList %}
+    <li>{{ news.title }}</li>
+    {% endfor %}
+</ul>

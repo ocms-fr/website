@@ -1,0 +1,35 @@
+{{ form_ajax('onUpdate') }}
+
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="accountName">Nom d'utilisateur</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="username" type="text" id="accountName" placeholder="Saisissez votre nom d'utilisateur" value="{{ user.name }}">
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="accountEmail">Addresse email</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="email" type="email" id="accountEmail" placeholder="Saisissez votre nom d'utilisateur" value="{{ user.email }}">
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="accountPassword">Nouveau mot de passe</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="password" type="password" id="accountPassword" placeholder="Saisissez votre nom d'utilisateur" value="{{ user.name }}">
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="accountPasswordConfirm">Nom d'utilisateur</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="password_confirmation" type="password" id="accountPasswordConfirm" placeholder="Saisissez votre nom d'utilisateur" value="{{ user.name }}">
+    </div>
+
+    {% if updateRequiresPassword %}
+        <p>Pour modifier ces informations, veuillez renseigner votre mot de passe actuel.</p>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="accountPasswordCurrent">Nom d'utilisateur</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="password_current" type="password" id="accountPasswordCurrent" placeholder="Saisissez votre nom d'utilisateur" value="{{ user.name }}">
+        </div>
+    {% endif %}
+
+<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+    Enregistrer
+</button>
+
+{{ form_close() }}

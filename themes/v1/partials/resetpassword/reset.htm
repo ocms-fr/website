@@ -1,0 +1,20 @@
+<p class="prose mb-6">
+    Veuillez renseigner le code de vérification présent dans l'email qui vous as été adressé.
+</p>
+
+<form data-request="{{ __SELF__ }}::onResetPassword" data-request-update="'{{ __SELF__ }}::complete': '#partialUserResetForm'">
+
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="resetCode">Code d'activation</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="code" type="text" id="resetCode" placeholder="Saisissez le code de vérification" value="{{ __SELF__.code }}">
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="resetPassword">Nouveau mot de passe</label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="password" type="password" id="resetPassword" placeholder="Saisissez un mot de passe">
+    </div>
+
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        Restaurer
+    </button>
+</form>

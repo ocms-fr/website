@@ -1,0 +1,6 @@
+1.0.1:
+    - 'Initialize plugin.'
+    - builder_table_create_sunlab_newsletter_subscribers.php
+    - 'sunlab_newsletter_subscribers table created successfully.'
+    - builder_table_create_sunlab_newsletter_subscribers_categories.php
+    - 'sunlab_newsletter_subscribers_categories table created successfully.'

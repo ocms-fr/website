@@ -1,0 +1,48 @@
+{% set paginationEnabled =
+	topics.currentPage > 1 or
+	topics.lastPage > 1 or
+	topics.lastPage > topics.currentPage
+%}
+
+<div class="bg-gray-200 rounded-b-lg px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+    <!-- Mobile Navigation-->
+    <div class="flex-1 flex justify-between sm:hidden mx-4">
+        {% if topics.currentPage > 1 %}
+        <a href="{{ paginationUrl ~ (topics.currentPage - 1) }}" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+            Précédents
+        </a>
+        {% else %}
+        <span class="relative inline-flex items-center px-4 py-2 border border-gray-200 text-sm leading-5 font-medium rounded-md text-gray-500 bg-white">
+            Précédents
+        </span>
+        {% endif %}
+
+        {% if topics.lastPage > topics.currentPage %}
+        <a href="{{ paginationUrl ~ (topics.currentPage + 1) }}" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+            Suivants
+        </a>
+        {% else %}
+        <span class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-200 text-sm leading-5 font-medium rounded-md text-gray-500 bg-white">
+            Suivants
+        </span>
+        {% endif %}
+    </div>
+
+    <!-- Topics Displayed -->
+    <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+        <div>
+            <p class="text-sm leading-5 text-gray-700">
+                Affichage de
+                <span class="font-medium">{{ topics.firstItem }}</span>
+                à
+                <span class="font-medium">{{ topics.lastItem }}</span>
+                sur
+                <span class="font-medium">{{ topics.total }}</span>
+                .
+            </p>
+        </div>
+
+        <!-- Computer Navigation -->
+        {% partial __SELF__ ~ "::pagination-list" records=topics %}
+    </div>
+</div>

@@ -1,0 +1,12 @@
+{% for section, pages in items %}
+<li class="section">{{ section }}</li>
+<li>
+    <ul class="sub-list">
+        {% for page in pages %}
+        <li>
+            <a href="{{ page.url }}">{{ page.label }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</li>
+{% endfor %}

@@ -1,0 +1,45 @@
+<div class="mb-4">
+    <a
+        href="javascript:;"
+        onclick="$('#accountDeactivateForm').toggle()"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+    >
+        Désactiver mon compte
+    </a>
+</div>
+<div id="accountDeactivateForm" style="display: none">
+    {{ form_ajax('onDeactivate') }}
+        <hr />
+        <h3 class="my-2 text-xl">Désactiver votre compte?</h3>
+        <p>
+            Votre compte sera désactivé et vos informations effacées du site.
+            Vous pourrez à tout moment réactiver le compte en vous ré-inscrivant.
+        </p>
+
+        <div class="my-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="accountDeletePassword">Pour continuer, saisissez votre mot de passe:</label>
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                name="password"
+                type="password"
+                id="accountDeletePassword"
+                placeholder="Saisissez votre nom d'utilisateur" />
+        </div>
+
+
+        <div class="mb-4">
+            <button type="submit" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Confirmer la désactivation
+            </button>
+        </div>
+        <div class="mb-4">
+            <a
+                href="javascript:;"
+                onclick="$('#accountDeactivateForm').toggle()"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+                Annuler la désactivation
+            </a>
+        </div>
+    {{ form_close() }}
+</div>

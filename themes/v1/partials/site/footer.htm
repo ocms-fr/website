@@ -1,0 +1,65 @@
+<footer class="relative lg:px-16 px-8 bg-royalblue pb-10 shadow-md h-64">
+    <div class="absolute left-0 right-0">
+        <div class="relative w-full">
+            <div class="container mx-auto bg-gray-200 rounded-b-lg h-8 -mt-2 w-full shadow-lg">
+                <div class="bg-gray-200 h-4 -mt-2"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container mx-auto flex flex-wrap pt-6 justify-between">
+        <div id="footer" class="w-full md:w-3/6">
+            <div class="my-3 md:mb-0 pr-0 md:pr-10">
+                <a href="{{ ''|page }}" class="text-xl font-semibold text-blue-100 hover:text-white tracking-normal">OctoberCMS.fr</a>
+                <p class="text-sm my-2 pl-2">Communauté non-officielle française du projet <a href="https://www.octobercms.com" title="Visitez le site officiel d'OctoberCMS">OctoberCMS</a></p>
+                {% component 'SubscribeForm' %}
+            </div>
+
+        </div>
+
+        <div class="w-full md:w-1/6">
+
+            <div class="text-green-100 mb-3 md:mb-0">
+                <ul class="">
+                    <li class="mt-2">
+                        <a href="{{ 'questions-reponses'|page }}" class="text-green-100 hover:text-white">Questions/Réponses</a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="{{ 'mentions-legales'|page }}" class="text-green-100 hover:text-white">Mentions légales</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        {#
+        <div class="w-full md:w-1/6">
+
+            <div class="text-green-100 mb-3 md:mb-0">
+                <span class="text-lg">Links 2</span>
+                <ul class="">
+                    <li class="mt-2">
+                        <a href="" class="text-green-100 hover:text-white">FAQ</a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="" class="text-green-100 hover:text-white">Help</a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="" class="text-green-100 hover:text-white">Support</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="w-full md:w-1/6">
+
+            <div class="text-green-100 mb-3 md:mb-0">
+                <ul>
+                    <li class="mt-2">
+                        <a href="" class="text-green-100 hover:text-white">Mentions légales</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        #}
+    </div>
+</footer>

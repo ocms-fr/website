@@ -1,0 +1,92 @@
+<table class="min-w-full">
+    <thead class="bg-gray-200 py-3 border-b border-gray-300 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+        <tr>
+            <th class="hidden md:table-cell"></th>
+            <th class="px-6 py-3">
+                Canal
+            </th>
+            <th class="hidden md:table-cell px-6 py-3 text-center">
+                Sujets
+            </th>
+            <th class="hidden md:table-cell px-6 py-3 text-center">
+                Messages
+            </th>
+            <th class="px-6 py-3 max-w-xs">
+                Dernier sujet actif
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for channel in channels %}
+
+        {% if channel.relations.children %}
+
+        {% for channel in channel.children %}
+        <tr class="hover:bg-gray-100">
+
+            <td class="hidden md:table-cell px-6 py-4 text-center">
+                <a href="{{ channel.first_topic.url }}?page=last#post-{{ channel.first_topic.last_post_id }}">
+                    <span class="topic-indicator {{ topic.hasNew ? 'has-new' }}"></span>
+                </a>
+            </td>
+
+            <td class="px-6 py-4">
+                <div class="text-sm leading-5 text-gray-900">
+                    <a href="{{ channel.url }}">
+                        {{ channel.title }}
+                    </a>
+                </div>
+                <p class="text-sm leading-5 text-gray-500">
+                    {{ channel.description }}
+                </p>
+
+                {% if channel.children|length %}
+                <div class="forum-subchannel">
+                    <ul>
+                        <li><span>Subforum</span></li>
+                        {% for channel in channel.children %}
+                        <li>
+                            <a href="{{ channel.url }}" title="{{ channel.description }}">
+                                {{ channel.title }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </td>
+
+            <td class="hidden md:table-cell px-6 py-4 text-center">
+                <p>{{ channel.count_topics }}</p>
+            </td>
+
+            <td class="hidden md:table-cell px-6 py-4 text-center">
+                <p>{{ channel.count_posts }}</p>
+            </td>
+
+            <td class="px-6 py-4">
+                {% if channel.first_topic %}
+                <div class="flex flex-col">
+                    <a href="{{ channel.first_topic.url }}?page=last#post-{{ channel.first_topic.last_post_id }}">
+                        {{ channel.first_topic.subject }}
+                    </a>
+                    <small class="md:whitespace-no-wrap">
+                        {% partial __SELF__ ~ "::timestamp" date=channel.first_topic.last_post_at %}
+                    </small>
+                </div>
+                {% endif %}
+            </td>
+
+        </tr>
+        {% endfor %}
+
+        {% else %}
+        <tr>
+            <td colspan="100">There are no channel.</td>
+        </tr>
+        {% endif %}
+
+        {% endfor %}
+    </tbody>
+</table>
