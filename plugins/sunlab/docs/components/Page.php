@@ -50,8 +50,8 @@ class Page extends \Cms\Classes\ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => trans('romainmazb.adminbar::lang.plugin.name'),
-            'description' => trans('romainmazb.adminbar::lang.plugin.description'),
+            'name' => trans('sunlab.docs::lang.plugin.name'),
+            'description' => trans('sunlab.docs::lang.plugin.description'),
         ];
     }
 
@@ -59,13 +59,13 @@ class Page extends \Cms\Classes\ComponentBase
     {
         return [
             'package_name' => [
-                'title'             => trans('romainmazb.adminbar::lang.properties.titles.package_name'),
-                'description'       => trans('romainmazb.adminbar::lang.properties.descriptions.package_name'),
+                'title'             => trans('sunlab.docs::lang.properties.titles.package_name'),
+                'description'       => trans('sunlab.docs::lang.properties.descriptions.package_name'),
                 'type'              => 'string'
             ],
             'path' => [
-                'title'             => trans('romainmazb.adminbar::lang.properties.titles.path'),
-                'description'       => trans('romainmazb.adminbar::lang.properties.descriptions.path'),
+                'title'             => trans('sunlab.docs::lang.properties.titles.path'),
+                'description'       => trans('sunlab.docs::lang.properties.descriptions.path'),
                 'type'              => 'string',
                 'default'          => '{{ :path }}'
             ]
